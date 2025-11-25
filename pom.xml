@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.prueba</groupId>
-    <artifactId>Prueba_Classora</artifactId>
+    <artifactId>Prueba_Izertis</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Prueba_Classora</name>
-    <description>Prueba_Classora</description>
+    <name>Prueba_Izertis</name>
+    <description>Prueba_Izertis</description>
     <url/>
     <properties>
         <java.version>21</java.version>

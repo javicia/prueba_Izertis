@@ -1,4 +1,4 @@
-# Prueba Classor Microservicio de Precios (Zara)
+# Prueba Izertis Microservicio de Precios (Zara)
 
 ## Índice
 
@@ -36,17 +36,17 @@ Para un microservicio de sólo lectura, WebFlux reduce coste de infraestructura 
        │  Controller  │  ← Adaptador de Entrada (HTTP)
        └─────┬────────┘
              │ GetPriceQuery
-┌────────────▼────────────┐
-│   Application Service   │  ← Caso de uso (PriceService)
-└────────────┬────────────┘
-│ PriceRepositoryPort (out)
-┌────────────▼────────────┐
-│  Adapter R2DBC / H2     │  ← Infra: BBDD reactiva
-└────────────┬────────────┘
-│ PriceEntity ↔ PriceMapper
-       ┌─────▼────┐
-       │  Domain  │  ← Modelo de negocio (Price)
-       └──────────┘
+    ┌────────────▼────────────┐
+    │   Application Service   │  ← Caso de uso (PriceService)
+    └────────────┬────────────┘
+    │ PriceRepositoryPort (out)
+    ┌────────────▼────────────┐
+    │  Adapter R2DBC / H2     │  ← Infra: BBDD reactiva
+    └────────────┬────────────┘
+    │ PriceEntity ↔ PriceMapper
+           ┌─────▼────┐
+           │  Domain  │  ← Modelo de negocio (Price)
+           └──────────┘
 ```
 * Dominio: Price y reglas sin frameworks.
 * Application: orquesta casos de uso (PriceServiceImpl), aplica CO. Circuit Breaker.
@@ -86,8 +86,8 @@ prices
 ├── Dockerfile
 ├── src
 │   ├── main
-│   │   ├── java/com/prueba/classora
-│   │   │   ├── PruebaClassoraApplication.java
+│   │   ├── java/com/prueba/izertis
+│   │   │   ├── PruebaIzertisApplication.java
 │   │   │   ├── domain         ← Modelo & puertos dominio
 │   │   │   ├── application    ← Casos de uso & DTOs
 │   │   │   └──infrastructure ← Adaptadores, config, seguridad, mappers
@@ -98,7 +98,7 @@ prices
 │   │       ├── schema.sql
 │   │       └── data.sql
 │   └── test
-│       ├── java/com/prueba/classora
+│       ├── java/com/prueba/izertis
 │       │   └── PriceControllerIntegrationTest.java
 └── README.md
 ```
@@ -109,7 +109,7 @@ prices
 # Compilar
 mvn clean package
 # Arrancar
-java -jar target/Prueba_Classora-0.0.1-SNAPSHOT.jar \
+java -jar target/Prueba_Izertis-0.0.1-SNAPSHOT.jar \
 --spring.profiles.active=dev
 ```
 ## Circuit Breaker (Resilience4j)
@@ -127,9 +127,9 @@ De esta forma el servicio sigue siendo resiliente ante picos de error de la BBDD
 
 ```bash
 mvn package
-docker build -f Dockerfile.dev -t classora-dev .
+docker build -f Dockerfile.dev -t izertis-dev .
 # Variables opcionales pueden pasarse con -e
-docker run -p 8082:8082 classora-dev
+docker run -p 8082:8082 izertis-dev
 ```
 
 ## Tests

@@ -1,28 +1,18 @@
 spring:
   application:
-    name: Prueba_Classora
-server:
-  port: ${SERVER_PORT}
-r2dbc:
-  url: ${R2DBC_URL:r2dbc:h2:mem:///testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE}
-  username: ${R2DBC_USERNAME}
-sql:
-  init:
-    mode: ${SQL_INIT_MODE}
-h2:
-  console:
-    enabled: ${H2_CONSOLE_ENABLED}
-codec:
-default-json-in-memory-size:  ${CODEC_DEFAULT_JSON_IN_MEMORY_SIZE}
+    name: Prueba_Izertis
+  r2dbc:
+    url: ${R2DBC_URL:r2dbc:h2:mem:///testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE}
+    username: ${R2DBC_USERNAME:sa}
+    password: ${R2DBC_PASSWORD:""}
+  sql:
+    init:
+      mode: ${SQL_INIT_MODE:never}
+  codec:
+    max-in-memory-size: ${CODEC_MAX_IN_MEMORY_SIZE:5MB}
 
-resilience4j:
-  circuitbreaker:
-    instances:
-      priceService:
-        failureRateThreshold: ${CB_FAILURE_RATE_THRESHOLD}
-        waitDurationInOpenState: ${CB_WAIT_DURATION}
-        permittedNumberOfCallsInHalfOpenState: ${CB_PERMITTED_CALLS_HALF_OPEN}
-        slidingWindowSize: ${CB_SLIDING_WINDOW_SIZE}
+server:
+  port: ${SERVER_PORT:8082}
 
 app:
   security:
